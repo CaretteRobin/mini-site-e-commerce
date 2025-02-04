@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev": "live-server .",
     "build": "esbuild js/main.js --bundle --outfile=out.js"
   },
   "keywords": [],
@@ -10,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "esbuild": "^0.24.2"
+    "esbuild": "^0.24.2",
+    "live-server": "^1.2.2"
   }
 }

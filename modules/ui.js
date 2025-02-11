@@ -31,7 +31,7 @@ function displayProduct(product) {
     const addToCartButton = photoDiv.querySelector('.product-add2cart');
     addToCartButton.addEventListener('click', () => {
         cart.addToCart(product);
-        console.log(cart.items); 
+        displayCart(); // Actualiser l'affichage du panier
     });
 
     return productDiv;
@@ -46,4 +46,23 @@ function buildProductsList(products) {
     });
 }
 
-export { buildProductsList };
+function displayCart() {
+    const cartContent = document.getElementById('cart-content');
+    cartContent.innerHTML = cart.items.map(item => `
+        <tr>
+            <td>${item.product.ref}</td>
+            <td>${item.product.description}</td>
+            <td>${item.qty}</td>
+            <td>${item.product.price} €</td>
+            <td>${(item.product.price * item.qty).toFixed(2)} €</td>
+        </tr>
+    `).reduce((acc, curr) => acc + curr, '');
+
+    const totalProducts = cart.genericCalc((acc, item) => acc + item.qty);
+    const totalPrice = cart.genericCalc((acc, item) => acc + item.product.price * item.qty).toFixed(2);
+
+    document.getElementById('total-products').textContent = totalProducts;
+    document.getElementById('cart-total').textContent = `${totalPrice} €`;
+}
+
+export { buildProductsList, displayCart };

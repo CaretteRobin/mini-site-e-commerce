@@ -1,9 +1,10 @@
 import { tableauProduits, search } from './products.js';
-import { buildProductsList } from './ui.js';
+import { buildProductsList, displayCart } from './ui.js';
 
 function init() {
   const products = tableauProduits;
   buildProductsList(products);
+  displayCart(); 
 
   const searchInput = document.getElementById('product-search');
   searchInput.addEventListener('keyup', (event) => {

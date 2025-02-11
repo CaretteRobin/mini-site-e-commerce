@@ -11,6 +11,10 @@ class Cart {
             this.items.push({ product, qty: 1 });
         }
     }
+
+    genericCalc(callback) {
+        return this.items.reduce(callback, 0);
+    }
 }
 
 const cart = new Cart();

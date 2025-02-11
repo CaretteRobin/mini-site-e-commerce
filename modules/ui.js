@@ -28,3 +28,14 @@ function displayProduct(product) {
   
     return productDiv;
   }
+  
+  function buildProductsList(products) {
+    const productList = document.getElementById('product-list');
+    productList.innerHTML = ''; 
+    products.forEach(product => {
+      const productElement = displayProduct(product);
+      productList.appendChild(productElement);
+    });
+  }
+  
+  export { buildProductsList };

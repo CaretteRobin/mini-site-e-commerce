@@ -12,3 +12,9 @@ export const tableauProduits = [
     new Product('P3', 15, "VLT94"),
     new Product('P4', 50, "Hermann")
 ];
+
+export function search(keywords) {
+    return tableauProduits.filter(product => 
+        product.ref.includes(keywords) || product.description.includes(keywords)
+    );
+}

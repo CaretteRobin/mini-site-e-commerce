@@ -12,6 +12,10 @@ class Cart {
         }
     }
 
+    emptyCart() {
+        this.items = [];
+    }
+
     genericCalc(callback) {
         return this.items.reduce(callback, 0);
     }

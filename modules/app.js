@@ -1,5 +1,6 @@
 import { tableauProduits, search } from './products.js';
 import { buildProductsList, displayCart } from './ui.js';
+import { cart } from './cart.js';
 
 function init() {
   const products = tableauProduits;
@@ -13,6 +14,12 @@ function init() {
       const filteredProducts = search(keywords);
       buildProductsList(filteredProducts);
     }
+  });
+
+  const emptyCartLink = document.getElementById('empty-cart');
+  emptyCartLink.addEventListener('click', () => {
+    cart.emptyCart();
+    displayCart(); 
   });
 }
 

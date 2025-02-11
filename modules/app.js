@@ -4,7 +4,7 @@ import { cart } from './cart.js';
 
 function init() {
   const products = tableauProduits;
-  buildProductsList(products);
+  buildProductsList(products, addToCart);
   displayCart(); 
 
   const searchInput = document.getElementById('product-search');
@@ -12,7 +12,7 @@ function init() {
     if (event.key === 'Enter') {
       const keywords = searchInput.value;
       const filteredProducts = search(keywords);
-      buildProductsList(filteredProducts);
+      buildProductsList(filteredProducts, addToCart);
     }
   });
 
@@ -21,6 +21,11 @@ function init() {
     cart.emptyCart();
     displayCart(); 
   });
+}
+
+function addToCart(product) {
+  cart.addToCart(product);
+  displayCart(); 
 }
 
 export { init };

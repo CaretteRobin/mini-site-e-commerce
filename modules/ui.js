@@ -1,6 +1,6 @@
 import { cart } from './cart.js';
 
-function displayProduct(product) {
+function displayProduct(product, addToCartCallback) {
     const productDiv = document.createElement('div');
     productDiv.className = 'product';
 
@@ -30,18 +30,17 @@ function displayProduct(product) {
 
     const addToCartButton = photoDiv.querySelector('.product-add2cart');
     addToCartButton.addEventListener('click', () => {
-        cart.addToCart(product);
-        displayCart(); // Actualiser l'affichage du panier
+        addToCartCallback(product);
     });
 
     return productDiv;
 }
 
-function buildProductsList(products) {
+function buildProductsList(products, addToCartCallback) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = ''; 
     products.forEach(product => {
-        const productElement = displayProduct(product);
+        const productElement = displayProduct(product, addToCartCallback);
         productList.appendChild(productElement);
     });
 }

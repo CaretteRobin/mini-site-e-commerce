@@ -1,6 +1,6 @@
 class Cart {
     constructor() {
-        this.items = [];
+        this.items = this.loadCart() || [];
     }
 
     addToCart(product) {
@@ -10,14 +10,25 @@ class Cart {
         } else {
             this.items.push({ product, qty: 1 });
         }
+        this.saveCart();
     }
 
     emptyCart() {
         this.items = [];
+        this.saveCart();
     }
 
     genericCalc(callback) {
         return this.items.reduce(callback, 0);
+    }
+
+    saveCart() {
+        localStorage.setItem('cart', JSON.stringify(this.items));
+    }
+
+    loadCart() {
+        const cartData = localStorage.getItem('cart');
+        return cartData ? JSON.parse(cartData) : null;
     }
 }
 

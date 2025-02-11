@@ -7,7 +7,7 @@ function displayProduct(product, addToCartCallback) {
     const photoDiv = document.createElement('div');
     photoDiv.className = 'photo';
     photoDiv.innerHTML = `
-      picto
+      <img src="${product.photo}" alt="${product.ref}">
       <a class="product-add2cart">
         <span class="mdi mdi-cart"></span>
       </a>

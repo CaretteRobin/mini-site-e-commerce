@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "live-server .",
-    "build": "esbuild js/main.js --bundle --outfile=out.js"
+    "build": "esbuild modules/main.js --bundle --minify --outfile=out.js"
   },
   "keywords": [],
   "author": "",

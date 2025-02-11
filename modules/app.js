@@ -3,8 +3,7 @@ import { buildProductsList } from './ui.js';
 
 function init() {
   const products = tableauProduits;
-
   buildProductsList(products);
 }
 
-init();
+export { init };

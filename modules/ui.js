@@ -1,7 +1,9 @@
+import { cart } from './cart.js';
+
 function displayProduct(product) {
     const productDiv = document.createElement('div');
     productDiv.className = 'product';
-  
+
     const photoDiv = document.createElement('div');
     photoDiv.className = 'photo';
     photoDiv.innerHTML = `
@@ -10,7 +12,7 @@ function displayProduct(product) {
         <span class="mdi mdi-cart"></span>
       </a>
     `;
-  
+
     const detailsDiv = document.createElement('div');
     detailsDiv.className = 'details';
     detailsDiv.innerHTML = `
@@ -22,20 +24,26 @@ function displayProduct(product) {
         ${product.description}
       </div>
     `;
-  
+
     productDiv.appendChild(photoDiv);
     productDiv.appendChild(detailsDiv);
-  
+
+    const addToCartButton = photoDiv.querySelector('.product-add2cart');
+    addToCartButton.addEventListener('click', () => {
+        cart.addToCart(product);
+        console.log(cart.items); 
+    });
+
     return productDiv;
-  }
-  
-  function buildProductsList(products) {
+}
+
+function buildProductsList(products) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = ''; 
     products.forEach(product => {
-      const productElement = displayProduct(product);
-      productList.appendChild(productElement);
+        const productElement = displayProduct(product);
+        productList.appendChild(productElement);
     });
-  }
-  
-  export { buildProductsList };
+}
+
+export { buildProductsList };
